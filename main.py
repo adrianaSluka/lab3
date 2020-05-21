@@ -1,3 +1,7 @@
+import chart_studio
+import plotly.graph_objects as go
+chart_studio.tools.set_credentials_file(username='asluka', api_key='IcXrgX66CiHeMKQxmvqI')
+import chart_studio.plotly as py
 import cx_Oracle
 
 username = 'system'
