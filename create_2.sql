@@ -24,14 +24,14 @@ ALTER TABLE country3 ADD CONSTRAINT country3_pk PRIMARY KEY ( country_name );
 
 CREATE TABLE event3 (
     event_id          INTEGER NOT NULL,
-    place_longitude   NUMBER(9, 6) NOT NULL,
-    place_latitude    NUMBER(9, 6) NOT NULL
+    place_longitude   FLOAT(126) NOT NULL,
+    place_latitude    FLOAT(126) NOT NULL
 );
 
 ALTER TABLE event3 ADD CONSTRAINT event3_pk PRIMARY KEY ( event_id );
 
 CREATE TABLE location3 (
-    city_name              VARCHAR2(20),
+    city_name              VARCHAR2(100),
     country_country_name   VARCHAR2(20) NOT NULL
 );
 
@@ -39,14 +39,13 @@ ALTER TABLE location3 ADD CONSTRAINT location3_pk PRIMARY KEY ( city_name,
                                                                country_country_name );
 
 CREATE TABLE place3 (
-    latitude             NUMBER(9, 6) NOT NULL,
-    longitude            NUMBER(9, 6) NOT NULL,
-    location_city_name   VARCHAR2(20) NOT NULL,
+    latitude             FLOAT(126) NOT NULL UNIQUE,
+    longitude            FLOAT(126) NOT NULL UNIQUE,
+    location_city_name   VARCHAR2(100) NOT NULL,
     country_name         VARCHAR2(20) NOT NULL
 );
 
-ALTER TABLE place3 ADD CONSTRAINT place3_pk PRIMARY KEY ( longitude,
-                                                         latitude );
+ALTER TABLE place3 ADD CONSTRAINT place3_pk PRIMARY KEY ( latitude,longitude );
 
 ALTER TABLE comment3
     ADD CONSTRAINT comment3_event3_fk FOREIGN KEY ( event_event_id )
@@ -67,10 +66,5 @@ ALTER TABLE place3
                                                    country_name )
         REFERENCES location3 ( city_name,
                                country_country_name );
-
-
-
-
-
 
 
