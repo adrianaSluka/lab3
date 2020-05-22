@@ -1,5 +1,5 @@
 CREATE VIEW TablesJoined
-AS SELECT shape, duration_sec, event_id, country_name, longitude
+AS SELECT shape, duration_sec, event_id, country_name, longitude, latitude, city_name
 FROM comment3 
 JOIN event3
 ON event_event_id=event_id
